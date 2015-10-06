@@ -1,4 +1,3 @@
-package ai_lab2;
 
 import java.util.HashMap;
 
