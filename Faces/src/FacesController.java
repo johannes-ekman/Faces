@@ -15,5 +15,5 @@ public class FacesController {
 		this.trainingFacit = trainingFacit;
 		this.testFaces = testFaces;
 	}
-	
+
 }

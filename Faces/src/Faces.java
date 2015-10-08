@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,14 +14,16 @@ public class Faces {
 	}
         try {
             System.out.println("Parsing training...");
-            FaceParser.parse(args[0]);
+            ArrayList<Face> faces =  FaceParser.parse(args[0]);
             System.out.println("Training finished parsing.");
             System.out.println("Parsing facit...");
-            FacitParser.parse(args[1]);
+            HashMap<String, Integer> facitMap = FacitParser.parse(args[1]);
             System.out.println("Facit parsing complete.");
             System.out.println("Parsing test...");
-            FaceParser.parse(args[2]);
+            ArrayList<Face> testFaces =  FaceParser.parse(args[2]);
             System.out.println("Test parsing complete.");
+
+            FacesController fC = new FacesController(faces, facitMap, testFaces);
             
         } catch (Exception ex) {
             Logger.getLogger(Faces.class.getName()).log(Level.SEVERE, null, ex);
