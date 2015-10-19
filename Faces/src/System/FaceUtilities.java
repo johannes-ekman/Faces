@@ -1,3 +1,5 @@
+package System;
+
 import java.util.Arrays;
 
 /**
@@ -77,15 +79,27 @@ public class FaceUtilities {
     }
 
     public static int[][] rotateCW90(int[][] matrix) {
+        int size = matrix.length;
+        int[][] rotated = new int[size][size];
 
-        return matrix;
+        for(int i = 0; i < size; i++) {
+            for(int j = 0 ; j < size; j++) {
+                rotated[j][size-1-i] = matrix[i][j];
+            }
+        }
+
+        return rotated;
     }
     public static int[][] rotateCCW90(int[][] matrix) {
+        int size = matrix.length;
+        int[][] rotated = new int[size][size];
 
-        return matrix;
-    }
-    public static int[][] rotate180(int[][] matrix) {
+        for(int i = 0; i < size; i++) {
+            for(int j = 0 ; j < size; j++) {
+                rotated[size-1-j][i] = matrix[i][j];
+            }
+        }
 
-        return matrix;
+        return rotated;
     }
 }
