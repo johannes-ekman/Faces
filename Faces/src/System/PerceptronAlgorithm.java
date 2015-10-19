@@ -7,9 +7,8 @@ public class PerceptronAlgorithm {
     private static final double LEARNING_RATE = 1.0;
     private int faceType;
     private int[][] weights;
-    private int numInstances;
 
-    public PerceptronAlgorithm(int faceType, int numInstances) {
+    public PerceptronAlgorithm(int faceType) {
 
         this.faceType = faceType;
         weights = new int[20][20];
