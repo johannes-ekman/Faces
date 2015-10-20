@@ -4,10 +4,25 @@ public class Face {
 	private int[][] dataPoints;
 	private String id;
         
-    public Face (int[][] dataPoints, String id) {
+    public Face(int[][] dataPoints, String id) {
         this.dataPoints = dataPoints;
         this.id = id;
+        evaluateRotation();
     }
+
+    private void evaluateRotation() {
+        int rotation = FaceUtilities.determineRotation(dataPoints);
+        if (rotation == 90) {
+            dataPoints = FaceUtilities.rotateCCW90(dataPoints);
+        } else if (rotation == -90) {
+            dataPoints = FaceUtilities.rotateCW90(dataPoints);
+        } else if (rotation == 180) {
+            for(int i = 0; i < 2; i++) {
+                dataPoints = FaceUtilities.rotateCW90(dataPoints);
+            }
+        }
+    }
+
     public void printFace() {
         System.out.println(id);
         for(int i = 0; i < 20; i++) {
@@ -20,21 +35,19 @@ public class Face {
         System.out.println();
 
     }
-    public int[][] getDataPoints() {
 
-        return dataPoints;
-    }
-    public void setDataPoints(int[][] dataPoints) {
-
-        this.dataPoints = dataPoints;
+    public String getId() {
+        return id;
     }
 
-    public void rotateFace(int rotation) {
+    public double[][] getDoubleRepresentation() {
+        double[][] matrix = new double[20][20];
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                matrix[i][j] = (float) dataPoints[i][j] / 32;
+            }
+        }
 
-        int[][] newPoints = new int[20][20];
-
-        //rotate using rotation
-
-        setDataPoints(newPoints);
+        return matrix;
     }
 }

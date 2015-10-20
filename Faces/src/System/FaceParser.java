@@ -22,8 +22,7 @@ public class FaceParser {
             } else {
                 String id = line;
 
-                Face face = new Face(readFaceMatrix(bufRead), id);
-                face.printFace();   
+                Face face = new Face(readFaceMatrix(bufRead), id);;
                 faces.add(face);
             }
         }

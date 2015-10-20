@@ -24,7 +24,6 @@ public class FacitParser {
                 String[] words = line.split(" ");
                 String key = words[0];
                 int value = Integer.parseInt(words[1]);
-                System.out.println(key+" "+value);
                 facitMap.put(key, value);
             }
         }
