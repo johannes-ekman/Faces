@@ -17,28 +17,26 @@ public class FaceUtilities {
         for (int i = 0; i < size/2; i++) {
             for (int j = 0; j < size/2; j++) {
                 // TopLeft
-                System.out.println("Value[0] = "+ values[0]+". Matrix input value: "+matrix[i][j]);
                 values[0] += matrix[i][j];
-                System.out.println("Value[0] = "+ values[0]+". Matrix input value: "+matrix[i][j]);
             }
         }
 
         for (int i = 0; i < size/2; i++) {
-            for (int j = 10; j < size; j++) {
+            for (int j = size/2; j < size; j++) {
                 //TopRight
                 values[1] += matrix[i][j];
             }
         }
 
-        for (int i = 10; i < size; i++) {
+        for (int i = size/2; i < size; i++) {
             for (int j = 0; j < size/2; j++) {
                  //BottomLeft
                 values[2] += matrix[i][j];
             }
         }
 
-        for (int i = 10; i < size; i++) {
-            for (int j = 10; j < size; j++) {
+        for (int i = size/2; i < size; i++) {
+            for (int j = size/2; j < size; j++) {
                 //BottomRight
                 values[3] += matrix[i][j];
             }
