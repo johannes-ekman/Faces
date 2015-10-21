@@ -29,9 +29,8 @@ public class FaceParser {
             } else if (line.isEmpty() || line.trim().equals("") || line.trim().equals("\n")) {
                 // Do nothing
             } else {
-                String id = line;
 
-                Face face = new Face(readFaceMatrix(bufRead), id);
+                Face face = new Face(readFaceMatrix(bufRead), line);
                 faces.add(face);
             }
         }
