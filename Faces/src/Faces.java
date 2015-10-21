@@ -3,9 +3,17 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * Main class that handles startup of the program.
+ * @author dv13jen, ens11pnn
+ */
 public class Faces {
 
+    /**
+     * Checks for correct arguments and starts parsing of all argument files.
+     * Lastly creates the FacesController that handles training and evaluation.
+     * @param args program arguments.
+     */
     public static void main(String[] args)  {
         if (args.length != 3)  {
             System.err.println("Usage: java -jar "

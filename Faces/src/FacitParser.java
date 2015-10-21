@@ -2,6 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 
+/**
+ * Class used to parse a text-file containing face id and correct value.
+ * @author dv13jen, ens11pnn
+ */
 public class FacitParser {
     public static HashMap<String, Integer> parse(String fileName) throws Exception {
 
@@ -9,7 +13,6 @@ public class FacitParser {
         BufferedReader bufRead = new BufferedReader(input);
         String line;
         HashMap<String, Integer> facitMap = new HashMap<String, Integer>();
-
 
         while ((line = bufRead.readLine()) != null) {  
 
