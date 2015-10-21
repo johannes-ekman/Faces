@@ -1,15 +1,11 @@
-package System;
 
-/**
- * Created by dv13jen on 2015-10-08.
- */
-public class PerceptronAlgorithm {
+public class Perceptron {
     private static final double LEARNING_RATE = 0.9;
     private int faceType;
     private double[][] weights;
     private double latestActivation;
 
-    public PerceptronAlgorithm(int faceType) {
+    public Perceptron(int faceType) {
 
         this.faceType = faceType;
         weights = new double[20][20];
@@ -44,7 +40,6 @@ public class PerceptronAlgorithm {
 
     }
 
-
     private double activation(double[][] img) {
         double act = 0.0;
         for(int i = 0; i < img.length; i++) {
@@ -65,8 +60,4 @@ public class PerceptronAlgorithm {
 
         return activation(img);
     }
-
-
-
-
 }

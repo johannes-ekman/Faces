@@ -1,8 +1,5 @@
-package System;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FacitParser {
@@ -10,7 +7,7 @@ public class FacitParser {
 
         FileReader input = new FileReader(fileName);
         BufferedReader bufRead = new BufferedReader(input);
-        String line = null;
+        String line;
         HashMap<String, Integer> facitMap = new HashMap<String, Integer>();
 
 

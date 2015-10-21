@@ -1,5 +1,3 @@
-package System;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -9,7 +7,7 @@ public class FaceParser {
 
         FileReader input = new FileReader(fileName);
         BufferedReader bufRead = new BufferedReader(input);
-        String line = null;
+        String line;
         ArrayList<Face> faces = new ArrayList<Face>();
 
         
@@ -22,7 +20,7 @@ public class FaceParser {
             } else {
                 String id = line;
 
-                Face face = new Face(readFaceMatrix(bufRead), id);;
+                Face face = new Face(readFaceMatrix(bufRead), id);
                 faces.add(face);
             }
         }

@@ -1,5 +1,3 @@
-package System;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -17,9 +15,9 @@ public class Faces {
             System.out.println("# Parsing training...");
             ArrayList<Face> faces =  FaceParser.parse(args[0]);
             System.out.println("# Training finished parsing.");
-            System.out.println("# Parsing facit...");
+            System.out.println("# Parsing training facit...");
             HashMap<String, Integer> facitMap = FacitParser.parse(args[1]);
-            System.out.println("# Facit parsing complete.");
+            System.out.println("# Training facit parsing complete.");
             System.out.println("# Parsing test...");
             ArrayList<Face> testFaces =  FaceParser.parse(args[2]);
             System.out.println("# Test parsing complete.");

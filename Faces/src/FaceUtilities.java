@@ -1,10 +1,3 @@
-package System;
-
-import java.util.Arrays;
-
-/**
- * Created by dv13jen on 2015-10-08.
- */
 public class FaceUtilities {
 
 
@@ -49,11 +42,13 @@ public class FaceUtilities {
             return -90;
 
         }
+
         if((topTwo[0] == 2 && topTwo[1] == 3) || (topTwo[0] == 3 && topTwo[1] == 2)) {
             // Rotate 180
             return 180;
 
         }
+        
         if((topTwo[0] == 3 && topTwo[1] == 1) || (topTwo[0] == 3 && topTwo[1] == 0)) {
             // Rotate counterClockwise 90
             return 90;
@@ -64,18 +59,22 @@ public class FaceUtilities {
 
     public static int[] twoLargestIndexes(int[] values) {
 
-        int[] topTwo = {0,0};
+        int[] topTwoIndex = {0,0};
+        int[] topTwoValues = {0,0};
 
         for(int i = 0; i < values.length; i++) {
-            if (values[i] > topTwo[0]) {
-                topTwo[1] = topTwo[0];
-                topTwo[0] = i;
-            } else if (values[i] > topTwo[1]) {
-                topTwo[1] = i;
+            if (values[i] > topTwoValues[0]) {
+                topTwoIndex[1] = topTwoIndex[0];
+                topTwoValues[1] = topTwoValues[0];
+                topTwoIndex[0] = i;
+                topTwoValues[0] = values[i];
+            } else if (values[i] > topTwoValues[1]) {
+                topTwoIndex[1] = i;
+                topTwoValues[1] = values[i];
             }
         }
 
-        return topTwo;
+        return topTwoIndex;
     }
 
     public static int[][] rotateCW90(int[][] matrix) {

@@ -1,5 +1,3 @@
-package System;
-
 import java.util.*;
 
 public class FacesController {
@@ -7,10 +5,10 @@ public class FacesController {
 	private HashMap<String, Integer> trainingFacit;
 	private ArrayList<Face> testFaces;
 
-	private PerceptronAlgorithm happy;
-	private PerceptronAlgorithm sad;
-	private PerceptronAlgorithm mischv;
-	private PerceptronAlgorithm mad;
+	private Perceptron happy;
+	private Perceptron sad;
+	private Perceptron mischv;
+	private Perceptron mad;
 	
 	public FacesController(ArrayList<Face> trainingFaces, 
 			HashMap<String, Integer> trainingFacit, 
@@ -18,13 +16,13 @@ public class FacesController {
 		
 		this.trainingFaces = trainingFaces;
 		this.trainingFacit = trainingFacit;
-		this.testFaces = new ArrayList(trainingFaces.subList(200, 300));
+		this.testFaces = testFaces;
 
 
-		happy = new PerceptronAlgorithm(1);
-		sad = new PerceptronAlgorithm(2);
-		mischv = new PerceptronAlgorithm(3);
-		mad = new PerceptronAlgorithm(4);
+		happy = new Perceptron(1);
+		sad = new Perceptron(2);
+		mischv = new Perceptron(3);
+		mad = new Perceptron(4);
 	}
 
 	public void run() {
@@ -51,6 +49,7 @@ public class FacesController {
 				activations[1] = sad.getLatestActivation();
 				activations[2] = mischv.getLatestActivation();
 				activations[3] = mad.getLatestActivation();
+
 			}
 			i++;
 		} while(!trainingComplete(activations));
@@ -62,15 +61,14 @@ public class FacesController {
 	private boolean trainingComplete(double[] activations) {
 		Arrays.sort(activations);
 		double result = activations[3] - activations[2];
-		if (result > 0.5)
+		if (result > 0.7)
 			return true;
 
 		return false;
 	}
 
 	private void evaluate() {
-		HashMap<String, Integer> evalMap = new HashMap<String, Integer>();
-		Collections.shuffle(testFaces);
+
 		for (Face face : testFaces) {
 			double[][] dataPoints = face.getDoubleRepresentation();
 
@@ -95,31 +93,9 @@ public class FacesController {
 				result = 4;
 			}
 
-			evalMap.put(face.getId(), result);
+			System.out.println(face.getId() + " " + result);
 
 		}
-
-		int correctAnswers = 0;
-
-		Iterator it = evalMap.entrySet().iterator();
-		int i = 0;
-		while (it.hasNext()) {
-			i++;
-			Map.Entry pair = (Map.Entry)it.next();
-			String evalKey = (String)pair.getKey();
-			int evalValue = (Integer)pair.getValue();
-			if (evalValue == trainingFacit.get(evalKey)) {
-				correctAnswers ++;
-			}
-			it.remove(); // avoids a ConcurrentModificationException
-		}
-
-		int correctPercent = (100 * correctAnswers) / i;
-
-		System.out.println("Correct answers: " + correctAnswers + "/" + i + " = " + correctPercent + "%");
-
-
 
 	}
-
 }
